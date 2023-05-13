@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Player, PlayerMetaData, Team, TeamMetaData } from 'src/models/players';
+import { Player, PlayerMetaData, Team, TeamMetaData } from '../models/players';
 
 @Injectable({
   providedIn: 'root',

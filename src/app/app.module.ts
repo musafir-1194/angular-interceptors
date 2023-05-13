@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { LoaderInterceptor } from 'src/interceptors/loader.interceptor';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
 
 @NgModule({
   declarations: [AppComponent],

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { Player, Team } from 'src/models/players';
-import { LoaderService } from 'src/services/loader.service';
-import { NbaService } from 'src/services/nba.service';
+import { Player, Team } from './models/players';
+import { LoaderService } from './services/loader.service';
+import { NbaService } from './services/nba.service';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +31,7 @@ export class AppComponent {
     this.emptyData();
     this._nbaService.getPlayers().subscribe({
       next: (player: Player[]) => (this.players = player),
-      error: (err) => console.log(err),
+      error: (err: any) => console.log(err),
     });
   }
 
@@ -39,7 +39,7 @@ export class AppComponent {
     this.emptyData();
     this._nbaService.getTeams().subscribe({
       next: (team: Team[]) => (this.teams = team),
-      error: (err) => console.log(err),
+      error: (err: any) => console.log(err),
     });
   }
 
