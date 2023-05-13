@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, filter } from 'rxjs';
 import { Player, PlayerMetaData, Team, TeamMetaData } from '../models/players';
 
 @Injectable({
@@ -13,14 +13,16 @@ export class NbaService {
   constructor(private _httpClient: HttpClient) {}
 
   getPlayers(): Observable<Player[]> {
-    return this._httpClient
-      .get<PlayerMetaData>(this._playersEndPoint)
-      .pipe(map((response: PlayerMetaData) => response.data));
+    return this._httpClient.get<PlayerMetaData>(this._playersEndPoint).pipe(
+      filter((response) => !!response),
+      map((response: PlayerMetaData) => response.data)
+    );
   }
 
   getTeams(): Observable<Team[]> {
-    return this._httpClient
-      .get<TeamMetaData>(this._teamsEndPoint)
-      .pipe(map((response: TeamMetaData) => response.data));
+    return this._httpClient.get<TeamMetaData>(this._teamsEndPoint).pipe(
+      filter((response) => !!response),
+      map((response: TeamMetaData) => response.data)
+    );
   }
 }
