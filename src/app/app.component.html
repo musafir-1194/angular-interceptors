@@ -1,11 +1,31 @@
-<app-top-bar></app-top-bar>
+<!-- <div class="items" *ngIf="(player$ | async); let players">
+    <ul>
+        <li *ngFor="let player of players">{{ player.first_name }} {{ player.last_name }}</li>
+    </ul>
+</div>
+<div class="items" *ngIf="(team$ | async); let teams">
+    <ul>
+        <li *ngFor="let team of teams">{{ team.city }} {{ team.conference }}</li>
+    </ul>
+</div> -->
 
-<div class="container">
-  <router-outlet></router-outlet>
+<div class="items">
+  <ul>
+    <li *ngFor="let player of players">
+      {{ player.first_name }} {{ player.last_name }}
+    </li>
+  </ul>
+  <ul>
+    <li *ngFor="let team of teams">{{ team.city }} {{ team.conference }}</li>
+  </ul>
 </div>
 
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->
+<div>
+  <button (click)="loadPLayers()">Load Players</button>
+  <button (click)="loadTeams()">Load Teams</button>
+</div>
+
+<!-- subscription to loading observable -->
+<div class="loading" *ngIf="loading$ | async">
+  <h1>Please wait...</h1>
+</div>
